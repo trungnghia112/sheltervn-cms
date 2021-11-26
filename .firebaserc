@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "sheltervn-cms"
+  },
+  "targets": {
+    "sheltervn-cms": {
+      "hosting": {
+        "shelter-cms": [
+          "sheltervn-cms"
+        ]
+      }
+    }
   }
 }

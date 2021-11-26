@@ -1,0 +1,77 @@
+//.p-inputtext {
+//  @extend .form-control;
+//}
+//
+//.p-button {
+//  @extend .btn;
+//}
+
+.p-field-radiobutton,
+.p-field-checkbox {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+
+  .p-radiobutton,
+  .p-checkbox {
+    margin-right: 0.5rem;
+  }
+
+  > label {
+    line-height: 1;
+  }
+}
+
+body {
+  .p-dropdown-panel {
+    max-width: 100%;
+
+    .p-dropdown-header {
+      padding: 10px;
+    }
+
+    .p-dropdown-item {
+      white-space: initial;
+    }
+  }
+
+  .p-datatable .p-datatable-thead > tr > th {
+    white-space: nowrap;
+  }
+}
+
+.p-datatable-responsive .p-datatable-tbody > tr > td .p-column-title {
+  display: none;
+}
+
+@media screen and (max-width: 40rem) {
+  .p-datatable {
+    &.p-datatable-responsive {
+      .p-datatable-thead > tr > th,
+      .p-datatable-tfoot > tr > td {
+        display: none !important;
+      }
+
+      .p-datatable-tbody > tr > td {
+        text-align: left;
+        display: block;
+        width: 100%;
+        float: left;
+        clear: left;
+        border: 0 none;
+
+        .p-column-title {
+          padding: 0.4rem;
+          min-width: 30%;
+          display: inline-block;
+          margin: -0.4em 1em -0.4em -0.4rem;
+          font-weight: bold;
+        }
+
+        &:last-child {
+          border-bottom: 1px solid var(--surface-d);
+        }
+      }
+    }
+  }
+}

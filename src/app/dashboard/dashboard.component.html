@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/logo.png" alt="" height="24">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="d-flex ms-auto">
+        <button (click)="authService.logout()" class="btn btn-outline-success" type="button">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-3">
+  <p-table #dt1 tableStyleClass="table table-striped" [columns]="cols" [value]="data$ | async" responsiveLayout="stack"
+    [(selection)]="selectedData" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="constantsTable.rows"
+    [rowsPerPageOptions]="constantsTable.rowsPerPageOptions" [globalFilterFields]="['name', 'email', 'mobile']"
+    styleClass="table-messages-wrap p-datatable-responsive" dataKey="id">
+
+    <ng-template pTemplate="caption">
+      <div class="row">
+        <div class="col-lg-4 mb-3 mb-lg-0 me-auto">
+          <input (input)="onSearch($event)" type="text" class="form-control"
+                placeholder="Search [name], [mobile], [email]">
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-danger" (click)="onDeleteSelectedData()" [disabled]="!selectedData || !selectedData.length">
+            <i class="pi pi-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+          <th *ngSwitchCase="'type'" class="tb-col-{{col.field}}">
+            {{col.header}}
+            <p-columnFilter field="type" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+              <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                  <p-multiSelect [ngModel]="value" [options]="typeData" placeholder="Any" (onChange)="filter($event.value)"></p-multiSelect>
+              </ng-template>
+          </p-columnFilter>
+          </th>
+          <th *ngSwitchDefault [pSortableColumn]="col.field" class="tb-col-{{col.field}}">
+            {{col.header}}
+            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+              ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+            </p-sortIcon>
+          </th>
+        </ng-container>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+        </td>
+        <ng-container *ngFor="let col of columns; let i = index" [ngSwitch]="col.field">
+          <td *ngSwitchCase="'timestamp'">
+            <span class="p-column-title me-3 fw-bold">{{col.header}}</span>
+            {{rowData[col.field] | date: 'yyyy-MM-dd HH:mm:ss'}}
+          </td>
+          <td *ngSwitchDefault>
+            <span class="p-column-title me-3 fw-bold">{{col.header}}</span>
+            {{rowData[col.field]}}
+          </td>
+        </ng-container>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

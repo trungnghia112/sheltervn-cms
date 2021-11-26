@@ -1,0 +1,5 @@
+<small *ngIf="control.status === 'INVALID' && control.errors" class="invalid-feedback">
+  <ng-container *ngFor="let error of entries">
+    <span *ngIf="control.errors[error[0]]">{{ error[1] }}</span>
+  </ng-container>
+</small>

@@ -1,0 +1,61 @@
+.dropzone-wrapper-form {
+  &.p-fileupload {
+    .p-fileupload-content {
+      padding: 1rem;
+
+      .p-button-label {
+        flex: inherit;
+      }
+    }
+
+    .p-fileupload-choose {
+      width: 100%;
+      display: block;
+    }
+
+    .p-messages {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .p-message {
+      margin: 0;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+      height: 100%;
+    }
+
+    .p-fileupload-files ~ .dropzone-profile-img {
+      display: none;
+    }
+
+    .p-message-wrapper {
+      @include flex-direction(column);
+      @include align-items(flex-start);
+      padding-top: 40px;
+
+      span {
+        margin: 0;
+      }
+    }
+
+    .p-message-icon {
+      display: none;
+    }
+
+    .p-message-close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: white;
+    }
+  }
+}
+
+.dropzone-wrapper-custom {
+
+}

@@ -1,1 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
+$light: #f6f7fc;
+@import "scss/core";
+@import "~bootstrap/scss/bootstrap";
+@import "scss/primeng";
+@import "scss/fileupload";
+
+.app-loading {
+  display: none;
+}
+
+.mh-100vh {
+  min-height: 100vh;
+}
+
+.object-fit-contain {
+  object-fit: contain;
+}
+
+.ng-invalid {
+  &.ng-touched {
+    border-color: $danger;
+  }
+
+  &.ng-touched ~ app-form-validation-control {
+    .invalid-feedback {
+      display: block;
+    }
+  }
+}
+
+.page-hero-bg {
+  height: 200px;
+  background-image: url("assets/images/background_form.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.form-block {
+  margin-top: -100px;
+  padding: $grid-gutter-width;
+  background-color: #ffffff;
+
+  .form-control,
+  .p-inputtext {
+    border-color: #efefef;
+    border-radius: 4px;
+    height: 48px;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:enabled:focus {
+      box-shadow: none;
+    }
+
+    &.ng-invalid.ng-touched {
+      border-color: $danger;
+    }
+  }
+
+  .p-inputwrapper.ng-invalid.ng-touched {
+    .p-inputtext,
+    .p-dropdown {
+      border-color: $danger;
+    }
+  }
+
+  .form-control,
+  .p-inputtext,
+  .p-inputwrapper,
+  .p-dropdown {
+    background: #efefef;
+  }
+
+  .p-dropdown-label.p-inputtext {
+    line-height: calc(48px - 0.5rem * 2);
+  }
+
+  .p-button.p-button-icon-only {
+    width: 3rem;
+    background-color: darken(#efefef, 10);
+    color: $body-color;
+    border-width: 0;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: none;
+      background-color: darken(#efefef, 10);
+      color: $body-color;
+      border-width: 0;
+    }
+  }
+}
+
+button.calendar,
+button.calendar:active {
+  width: 3rem;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=") !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: 50%;
+}
