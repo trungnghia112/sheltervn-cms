@@ -8,6 +8,7 @@
   },
   "hosting": [
     {
+      "target": "shelter-cms",
       "public": "dist/shelter-cms",
       "ignore": [
         "firebase.json",
